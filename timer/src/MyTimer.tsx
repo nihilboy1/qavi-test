@@ -71,7 +71,7 @@ export function MyTimer({ expiryTimestamp }: myTimerProps) {
 
           <button
             style={{
-              transform: `${rotateState ? "rotate(-360deg)": "rotate(90deg)"}`
+              transform: `${rotateState ? "rotate(-1000deg)": "rotate(1000deg)"}`
             }}
             className={S.reset}
             onClick={() => {
