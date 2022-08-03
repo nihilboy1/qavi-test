@@ -1,33 +1,31 @@
 .innerContainer {
   transform: rotate(-45deg) translate(-50%, -50%);
   position: absolute;
-  top: -5rem;
-  left: 14.2rem;
+  top: -1.2rem;
+  left: 13.8rem;
   width: 20rem;
-  height: 30rem;
-  color: var(--darkBlue);
+  height: 22rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
 
-  h1 {
-    font-size: 2rem;
-    font-weight: 600;
-  }
-
   .timeBox > span {
     font-size: 1.8rem;
     text-shadow: -2px 1px rgba(255, 255, 255, 0.432);
+    color: var(--black);
   }
 
   .timeBox {
+    text-shadow: -2px 1px rgba(255, 255, 255, 0.432);
     display: flex;
     justify-content: center;
     align-items: center;
     width: 2rem;
     padding-bottom: 2rem;
     position: relative;
+    gap: 0.2rem;
+    font-size: 1.5rem;
     .backgroundTimeBox {
       transform: rotate(-45deg);
       z-index: -1;
@@ -48,6 +46,7 @@
     gap: 2rem;
     margin-bottom: 1.5rem;
     .start {
+      
       width: 4.5rem;
     }
     .pause {
@@ -64,9 +63,9 @@
       border-radius: 50%;
       margin-bottom: -1.5rem;
 
-      &:hover{
-        border-color: var(--darkBlue);
-        box-shadow: 0px 0px 5px var(--darkBlue);
+      &:hover {
+        border-color: var(--black);
+        box-shadow: 0px 0px 5px var(--black);
       }
     }
     .start,
@@ -85,15 +84,28 @@
   left: -0.5rem;
   width: 19.8rem;
   height: 0.8rem;
-  border-radius: 1rem;
+  border-radius: 1rem 0rem 1rem 0rem;
   overflow: hidden;
   display: flex;
   align-items: center;
   border: 1px solid black;
+  box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.452);
+
 
   .innerProgressBar {
-    border-radius: 1rem;
+    border-radius: 1rem 0rem 1rem 0rem;
     height: 0.8rem;
-    background-color: var(--darkBlue);
+    background-color: var(--black);
   }
+}
+
+h1 {
+  position: absolute;
+  width: 20rem;
+  left: 10.5rem;
+  bottom: 10rem;
+  transform: rotate(270deg);
+  font-size: 2rem;
+  font-weight: 600;
+  text-shadow: -2px 1px rgba(255, 255, 255, 0.432);
 }

@@ -1,8 +1,9 @@
 .blueSquareContainer{
+  margin-bottom: 5rem;
   transform: rotate(45deg) ;
   border-radius: 1rem .5rem 1rem 15rem;
   width: 20rem;
   height: 20rem;
-  border: 10px solid var(--darkBlue);
+  border: 10px solid rgba(0, 0, 0, 0.836);
   display: flex;
 }

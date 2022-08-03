@@ -1,13 +1,43 @@
 import { InfoIcon } from '@chakra-ui/icons'
 import { Tooltip } from '@chakra-ui/react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import S from './styles/App.module.scss'
 import { timeToWords } from './timeToWords'
 
+export default function useWindowDimensions() {
+  const hasWindow = typeof window !== 'undefined'
+
+  function getWindowDimensions() {
+    const width = hasWindow ? window.innerWidth : null
+    const height = hasWindow ? window.innerHeight : null
+    return {
+      width,
+      height
+    }
+  }
+
+  const [windowDimensions, setWindowDimensions] = useState(
+    getWindowDimensions()
+  )
+
+  useEffect(() => {
+    if (hasWindow) {
+      function handleResize() {
+        setWindowDimensions(getWindowDimensions())
+      }
+
+      window.addEventListener('resize', handleResize)
+      return () => window.removeEventListener('resize', handleResize)
+    }
+  }, [hasWindow])
+
+  return windowDimensions
+}
+
 export function App() {
+  const {width } = useWindowDimensions()
   const [userInputHour, setUserInputHour] = useState(0)
   const [userInputMinute, setUserInputMinute] = useState(0)
-  const [finalValue, setFinalValue] = useState()
 
   return (
     <main className={S.container}>
@@ -35,6 +65,9 @@ export function App() {
           <label htmlFor="hours">hours</label>
           <input
             onKeyDown={event => {
+              if (width && width < 500){
+                return
+              }
               event.preventDefault()
             }}
             type="number"
@@ -49,6 +82,9 @@ export function App() {
           <label htmlFor="minutes">minutes</label>
           <input
             onKeyDown={event => {
+              if (width && width < 500){
+                return
+              }
               event.preventDefault()
             }}
             type="number"

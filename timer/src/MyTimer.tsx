@@ -15,6 +15,7 @@ export function MyTimer({ expiryTimestamp }: myTimerProps) {
     onExpire: () => console.log('Time is over!')
   })
   const [timeLeft, setTimeLeft] = useState(minutes * 60)
+  const fullTime = 300
 
   useEffect(() => {
     pause()
@@ -30,17 +31,17 @@ export function MyTimer({ expiryTimestamp }: myTimerProps) {
 
   return (
     <>
+      <h1>5 Minutes Timer</h1>
       <div className={S.progressBar}>
         <div
           style={{
             backgroundColor: `${isRunning ? '#2ecef2' : '#03318c'}`,
-            width: `${(timeLeft / 300) * 100}%`
+            width: `${(timeLeft / fullTime) * 100}%`
           }}
           className={S.innerProgressBar}
         ></div>
       </div>
       <div className={S.innerContainer}>
-        <h1>5 Minutes Timer</h1>
         <div className={S.timeBox}>
           <div
             className={S.backgroundTimeBox}
@@ -50,6 +51,7 @@ export function MyTimer({ expiryTimestamp }: myTimerProps) {
         </div>
         <p
           style={{
+            color: 'black',
             textDecoration: 'overline',
             textDecorationColor: `${isRunning ? '#2ecef2' : '#03318c'}`
           }}
@@ -71,14 +73,17 @@ export function MyTimer({ expiryTimestamp }: myTimerProps) {
 
           <button
             style={{
-              transform: `${rotateState ? "rotate(-1000deg)": "rotate(1000deg)"}`
+              transform: `${
+                rotateState ? 'rotate(-1000deg)' : 'rotate(1000deg)'
+              }`
             }}
             className={S.reset}
             onClick={() => {
               const time = new Date()
-              time.setSeconds(time.getSeconds() + 300)
+              time.setSeconds(time.getSeconds() + fullTime)
               restart(time)
               setRotateState(!rotateState)
+              setTimeLeft(fullTime)
             }}
           >
             <VscDebugRestart size="1.8rem" />
